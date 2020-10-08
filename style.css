@@ -14,8 +14,7 @@ body {
   margin: auto;
   margin-top: -27vh;
 
-  border-radius: 100%;
-  width: 4vh;
+  border-radius: 70%;
   
   transition: all 500ms;
 }
@@ -69,11 +68,16 @@ body {
     
   }
 
-.key:active { /* on clic / touch !!! */
+/* .key:active { 
     transform: scale(1.1);
     border-color: #ffc600;
     box-shadow: 0 0 10px #ffc600;
-}
+} */
+.key.playing { 
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 10px #ffc600;
+} 
 #player {
     
     display: flex;
