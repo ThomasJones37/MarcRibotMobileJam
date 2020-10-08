@@ -16,31 +16,31 @@
         <h1>Marc Ribot y Los Cubanos Postizos</h1>
         <!-- <h3>Play along</h3> -->
       </div>
-            <div data-key="81" class="key" onclick="note1();">
+            <div data-key="81" class="key" ontouchstart="note1();">
               <kbd>Q</kbd>
                 
               </div>
-              <div data-key="83" class="key" onclick="note2();">
+              <div data-key="83" class="key" ontouchstart="note2();">
                 <kbd>S</kbd> 
                 
               </div>
-              <div data-key="68" class="key" onclick="note3();">
+              <div data-key="68" class="key" ontouchstart="note3();">
                 <kbd>D</kbd>
                 
               </div>  
-              <div data-key="70" class="key" onclick="note4();">
+              <div data-key="70" class="key" ontouchstart="note4();">
                 <kbd>F</kbd>
                 
               </div>
-              <div data-key="71" class="key" onclick="note5();">
+              <div data-key="71" class="key" ontouchstart="note5();">
                 <kbd>G</kbd>
                
               </div>
-              <div data-key="72" class="key" onclick="note6();">
+              <div data-key="72" class="key" ontouchstart="note6();">
                 <kbd>H</kbd>
              
               </div>
-              <div data-key="74" class="key" onclick="note7();">
+              <div data-key="74" class="key" ontouchstart="note7();">
                 <kbd>J</kbd>
                 
               </div>
@@ -63,14 +63,14 @@
     
     <audio id="note7"  class="note"  data-key="74" src="./sounds/G.wav"></audio>    
 
-    
+    <!-- need to use on touch / touchstart whatever it is !-->
     <div id="player">
-      <img class="previous" data-key="37" src="./IMG/next.png" height="32px" width="32px" onClick="changeAudio();">
-      <div class="pp" data-key="32" onclick="playPause();"><img src="./IMG/pp.png" height="32px" width="32px"></div>
-      <img class="next" data-key="39" src="./IMG/next.png" height="32px" width="32px" onClick="changeAudio();">
+      <img class="previous" data-key="37" src="./IMG/next.png" height="32px" width="32px" ontouchstart="changeAudio();">
+      <div class="pp" data-key="32" ontouchstart="playPause();"><img src="./IMG/pp.png" height="32px" width="32px"></div>
+      <img class="next" data-key="39" src="./IMG/next.png" height="32px" width="32px" ontouchstart="changeAudio();">
     </div>
 
-    <img class="reload" onclick="backToStart()" src="./IMG/reload.png" height="32px" width="32px">
+    <img class="reload" ontouchstart="backToStart()" src="./IMG/reload.png" height="32px" width="32px">
 </body>
 
 <script>
