@@ -69,9 +69,17 @@
       <div class="pp" data-key="32" ontouchstart="playPause();"><img src="./IMG/pp.png" height="32px" width="32px"></div>
       <img class="next" data-key="39" src="./IMG/next.png" height="32px" width="32px" ontouchstart="changeAudio();">
     </div>
-
-    <img class="reload" ontouchstart="backToStart()" src="./IMG/reload.png" height="32px" width="32px">
+    
+    <img class="reload" data-key="82" ontouchstart="backToStart()" src="./IMG/reload.png" height="32px" width="32px">
 </body>
+
+
+
+
+
+
+
+
 
 <script>
 function removeTransition(e) {
@@ -293,112 +301,132 @@ note7();
 
 // }
 
-     window.addEventListener('keydown', playSound);
-   
+     window.addEventListener('keydown', controls);
+     
 
-     function playSound(e) {
+     
+       
+    
+     function controls(e) {
+     if (e.keyCode == 82) {
+      
+        const audio = document.getElementById('main_song');
+        const note1 = document.getElementById('note1');
+  const note2 = document.getElementById('note2');
+  const note3 = document.getElementById('note3');
+  const note4 = document.getElementById('note4');
+  const note5 = document.getElementById('note5');
+  const note6 = document.getElementById('note6');
+  const note7 = document.getElementById('note7');
+  audio.currentTime = 0;
+  audio.pause();
+     } else if (e.keyCode == 32) {
+
+      const a = document.getElementById('main_song'); 
+      if(a.paused) {
+        a.play();
+      }
+      else {
+        a.pause();
+        // a.currentTime = 0; for stop button
+      }
+     } else if (e.keyCode == 37 || e.keyCode == 39) {
+        const audio = document.getElementById('main_song');
+  const note1 = document.getElementById('note1');
+  const note2 = document.getElementById('note2');
+  const note3 = document.getElementById('note3');
+  const note4 = document.getElementById('note4');
+  const note5 = document.getElementById('note5');
+  const note6 = document.getElementById('note6');
+  const note7 = document.getElementById('note7');
+  if (a==1) {
+    audio.src = './sounds/I.mp3'; // C 
+
+    note1.src = './sounds/A.wav';
+    note2.src = './sounds/B.wav';
+    note3.src = './sounds/C.wav';
+    note4.src = './sounds/D.wav';
+    note5.src = './sounds/E.wav';
+    note6.src = './sounds/F.wav';
+    note7.src = './sounds/G.wav';
+    a++;
+    
+  }
+  else if (a==2) {
+    audio.src = './sounds/II.mp3'; // E
+
+    note1.src = './sounds/Ab.wav';
+    note2.src = './sounds/A.wav';
+    note3.src = './sounds/B.wav';
+    note4.src = './sounds/Db.wav';
+    note5.src = './sounds/Eb.wav';
+    note6.src = './sounds/E.wav';
+    note7.src = './sounds/Gb.wav';
+    a++;
+  }
+  else if (a==3) {
+    audio.src = './sounds/III.mp3'; // E
+
+    note1.src = './sounds/A.wav';
+    note2.src = './sounds/Bb.wav';
+    note3.src = './sounds/Db.wav';
+    note4.src = './sounds/D.wav';
+    note5.src = './sounds/E.wav';
+    note6.src = './sounds/F.wav';
+    note7.src = './sounds/G.wav';
+    a = 1;
+  }
+
+
+  document.getElementById('main_song').load();
+  document.getElementById('note1').load();
+  document.getElementById('note2').load();
+  document.getElementById('note3').load();
+  document.getElementById('note4').load();
+  document.getElementById('note5').load();
+  document.getElementById('note6').load();
+  document.getElementById('note7').load();
+     }
+     
+     else {
      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); 
      const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); 
      if (!audio) return; // stop from running
      audio.currentTime = 0; // rewind audio to start !
      audio.play();
      key.classList.add('playing');
+     }
    }
-  
-
-   
 
 
 
-// const main = new Audio("./sounds/I.mp3"); 
-// const playing = false;
-// document.body.onkeydown = function (e){
-//     if(e.keyCode == 32 && !playing){
-//         if ( main.paused ) {
-//               main.play();
-//           } else {
-//               main.pause();
-//     }
-//     }
-// }
 
-// const keypress = document.querySelectorAll('.key');
+  //  window.addEventListener('keydown', playSound);
+  //    window.addEventListener('keydown', reload);
 
-//   keypress.forEach(key => key.addEventListener('mouseover', toggleOpen));
-  
-
-//   function toggleOpen() {
-//     this.classList.toggle('open');    
+  //     function reload(e) {
+  //       const reload = document.querySelector(`.reload[data-key="${e.keyCode}"]`); 
+  //       const audio = document.getElementById('main_song');
+  //       const note1 = document.getElementById('note1');
+  // const note2 = document.getElementById('note2');
+  // const note3 = document.getElementById('note3');
+  // const note4 = document.getElementById('note4');
+  // const note5 = document.getElementById('note5');
+  // const note6 = document.getElementById('note6');
+  // const note7 = document.getElementById('note7');
+  // audio.currentTime = 0;
+  // audio.pause();
+  //     }
       
-//   }
-//   keypress.forEach(key => key.addEventListener('mouseout', toggleClose));
-
-//   function toggleClose() {
-//     this.classList.remove('open');      
-//   }
-
-// const C = new Audio("./sounds/C.wav");
-// const Db = new Audio("./sounds/Db.wav");
-// const D = new Audio("./sounds/D.wav");
-// const Eb = new Audio("./sounds/Eb.wav");
-// const E = new Audio("./sounds/E.wav");
-// const F = new Audio("./sounds/F.wav");
-// const Gb = new Audio("./sounds/Gb.wav");
-// const G = new Audio("./sounds/G.wav");
-// const Ab = new Audio("./sounds/Ab.wav");
-// const A = new Audio("./sounds/A.wav");
-// const Bb = new Audio("./sounds/Bb.wav");
-// const B = new Audio("./sounds/B.wav");
-
-// const playing = false;
-// document.body.onkeydown = function (e){
-//     if(e.keyCode == 81 && !playing){
-//         C.play();
-//         playing=true;
-//     } if(e.keyCode == 90 && !playing){
-//         Db.play();
-//         playing=true;
-//     } if(e.keyCode == 83 && !playing){
-//         D.play();
-//         playing=true;
-//     } if(e.keyCode == 69 && !playing){
-//         Eb.play();
-//         playing=true;
-//     } if(e.keyCode == 68 && !playing){
-//         E.play();
-//         playing=true;
-//     } if(e.keyCode == 70 && !playing){
-//         F.play();
-//         playing=true;
-//     } if(e.keyCode == 84 && !playing){
-//         Gb.play();
-//         playing=true;
-//     } if(e.keyCode == 71 && !playing){
-//         G.play();
-//         playing=true;
-//     } if(e.keyCode == 89 && !playing){
-//         Ab.play();
-//         playing=true;
-//     } if(e.keyCode == 72 && !playing){
-//         A.play();
-//         playing=true;
-//     } if(e.keyCode == 85 && !playing){
-//         Bb.play();
-//         playing=true;
-//     } if(e.keyCode == 74 && !playing){
-//         B.play();
-//         playing=true;
-//     }
-// }    
-
-
-// document.body.onkeyup = function (e){
-//     if(e.keyCode == 81){
-//         C.pause();
-//         playing=false;
-//     } }
- 
-    
+  //    function playSound(e) {
+  //    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); 
+  //    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); 
+  //    if (!audio) return; // stop from running
+  //    audio.currentTime = 0; // rewind audio to start !
+  //    audio.play();
+  //    key.classList.add('playing');
+     
+  //  }
 
 </script>
 </html>
