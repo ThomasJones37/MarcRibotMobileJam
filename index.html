@@ -80,7 +80,7 @@ function removeTransition(e) {
   }
 
    const keys = document.querySelectorAll('.key');
-   keys.forEach(key => key.addEventListener('touchend', removeTransition));
+  //  keys.forEach(key => key.addEventListener('touchend', removeTransition)); to fast for phone
    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
 // WORKAROUND TO STOP SOUNDS ON PAGE LOAD ....
