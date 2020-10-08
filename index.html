@@ -73,7 +73,17 @@
     <img class="reload" data-key="82" ontouchstart="backToStart()" src="./IMG/reload.png" height="32px" width="32px">
 </body>
 
-
+<div>
+  <ul class='hamburger_menu'>
+    <li>
+      <img src="./IMG/hamburger.png" height="32px" width="32px" alt="sss" />
+      <ul class='sub-menu'>
+        <li><b>Keys:</b> Q to J &nbsp&nbsp <b>Play / Pause :</b> Spacebar &nbsp&nbsp <b>Rewind:</b> R &nbsp&nbsp <b>Next Track:</b> Left or Right Arrow</li>
+      </ul>
+    </li>
+    
+  </ul>
+</div>
 
 
 
@@ -132,7 +142,14 @@ function backToStart() {
   const note6 = document.getElementById('note6');
   const note7 = document.getElementById('note7');
   audio.currentTime = 0;
-  audio.pause();
+  if(audio.paused) {
+        return;
+      }
+      else {
+        audio.play();
+        // a.currentTime = 0; for stop button
+      }
+//  audio.play(); // play or not ? leave a gap ? sound effect ??
   
 }
 
@@ -308,18 +325,29 @@ note7();
        
     
      function controls(e) {
-     if (e.keyCode == 82) {
+
+     if (e.keyCode == 82) { //reload
       
-        const audio = document.getElementById('main_song');
+        const audior = document.getElementById('main_song');
         const note1 = document.getElementById('note1');
-  const note2 = document.getElementById('note2');
-  const note3 = document.getElementById('note3');
-  const note4 = document.getElementById('note4');
-  const note5 = document.getElementById('note5');
-  const note6 = document.getElementById('note6');
-  const note7 = document.getElementById('note7');
-  audio.currentTime = 0;
-  audio.pause();
+        const note2 = document.getElementById('note2');
+        const note3 = document.getElementById('note3');
+        const note4 = document.getElementById('note4');
+        const note5 = document.getElementById('note5');
+        const note6 = document.getElementById('note6');
+        const note7 = document.getElementById('note7');
+        audior.currentTime = 0;
+        const reload = document.getElementsByClassName("reload")[0];
+        reload.classList.add('r');  
+        setTimeout(() => { reload.classList.remove('r'); }, 400);
+        
+        if(audior.paused) {
+        return;
+      }
+      else {
+        audior.play();
+    
+      }
      } else if (e.keyCode == 32) {
 
       const a = document.getElementById('main_song'); 
