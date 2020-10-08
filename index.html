@@ -16,7 +16,7 @@
         <h1>Marc Ribot y Los Cubanos Postizos</h1>
         <!-- <h3>Play along</h3> -->
       </div>
-            <div data-key="81" class="key" ontouchstart="note1();">
+            <div data-key="81" id="key1" class="key" ontouchstart="note1();">
               <kbd>Q</kbd>
                 
               </div>
@@ -74,6 +74,14 @@
 </body>
 
 <script>
+function removeTransition(e) {
+    
+     this.classList.remove('playing');
+  }
+
+   const keys = document.querySelectorAll('.key');
+   keys.forEach(key => key.addEventListener('touchend', removeTransition));
+   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
 // WORKAROUND TO STOP SOUNDS ON PAGE LOAD ....
 
@@ -86,6 +94,8 @@ document.addEventListener("DOMContentLoaded", function() {
   const note5 = document.getElementById('note5');
   const note6 = document.getElementById('note6');
   const note7 = document.getElementById('note7');
+  const keys = document.querySelectorAll('.key');
+  keys.classList.remove('playing');
   audio.currentTime = 0;
   audio.pause();
   note1.currentTime = 0;
@@ -199,58 +209,75 @@ playPause();
 
 function note1() {
   const noteI = document.getElementById('note1');
+  const key = document.getElementsByClassName("key")[0]; //it's an array duh
   noteI.currentTime=0;
   noteI.volume = 0.6;
   noteI.play();
+  key.classList.add('playing');
+ 
+
 }
 note1();
 
 function note2() {
   const noteII = document.getElementById('note2');
+  const key = document.getElementsByClassName("key")[1];
   noteII.currentTime=0;
   noteII.volume = 0.6;
   noteII.play();
+  key.classList.add('playing');
+
+  
 }
 note2();
 
 function note3() {
   const noteIII = document.getElementById('note3');
+  const key = document.getElementsByClassName("key")[2];
   noteIII.currentTime=0;
   noteIII.volume = 0.6;
   noteIII.play();
+  key.classList.add('playing');
 }
 note3();
 
 function note4() {
   const noteIV = document.getElementById('note4');
+  const key = document.getElementsByClassName("key")[3];
   noteIV.currentTime=0;
   noteIV.volume = 0.6;
   noteIV.play();
+  key.classList.add('playing');
 }
 note4();
 
 function note5() {
   const noteV = document.getElementById('note5');
+  const key = document.getElementsByClassName("key")[4];
   noteV.currentTime=0;
   noteV.volume = 0.6;
   noteV.play();
+  key.classList.add('playing');
 }
 note5();
 
 function note6() {
   const noteVI = document.getElementById('note6');
+  const key = document.getElementsByClassName("key")[5];
   noteVI.volume = 0.4;
   noteVI.currentTime=0;
   noteVI.play();
+  key.classList.add('playing');
 }
 note6();
 
 function note7() {
   const noteVII = document.getElementById('note7');
+  const key = document.getElementsByClassName("key")[6];
   noteVII.volume = 0.4;
   noteVII.currentTime=0;
-  
   noteVII.play();
+  key.classList.add('playing');
 }
 note7();
 
@@ -279,13 +306,7 @@ note7();
    }
   
 
-   function removeTransition(e) {
-     if(e.propertyName !== 'transform') return;
-     this.classList.remove('playing');
-  }
-
-   const keys = document.querySelectorAll('.key');
-   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+   
 
 
 
