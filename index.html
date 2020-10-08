@@ -48,19 +48,19 @@
          
       </div>
      
-    <audio id="main_song" src="./sounds/I.mp3"></audio> 
+    <audio id="main_song" src="./sounds/I.mp3" autoplay=0></audio> 
 
     <audio id="note1" class="note" data-key="81" src="./sounds/A.wav"></audio>
-    <!-- <audio data-key="90" src="./sounds/Db.wav"></audio> -->
+    
     <audio id="note2"  class="note"  data-key="83" src="./sounds/B.wav"></audio>
-    <!-- <audio data-key="69" src="./sounds/Eb.wav"></audio> -->
+    
     <audio id="note3"  class="note"  data-key="68" src="./sounds/C.wav"></audio>
     <audio id="note4"  class="note"  data-key="70" src="./sounds/D.wav"></audio>
-    <!-- <audio data-key="84" src="./sounds/Gb.wav"></audio> -->
+    
     <audio id="note5"  class="note"  data-key="71" src="./sounds/E.wav"></audio>
-    <!-- <audio data-key="89" src="./sounds/Ab.wav"></audio> -->
+    
     <audio id="note6"  class="note"  data-key="72" src="./sounds/F.wav"></audio>
-    <!-- <audio data-key="85" src="./sounds/Bb.wav"></audio> -->
+    
     <audio id="note7"  class="note"  data-key="74" src="./sounds/G.wav"></audio>    
 
     
@@ -70,11 +70,55 @@
       <img class="next" data-key="39" src="./IMG/next.png" height="32px" width="32px" onClick="changeAudio();">
     </div>
 
-    <a class="reload_a" href="./index.html"><img class="reload" src="./IMG/reload.png" height="32px" width="32px"></a>
+    <img class="reload" onclick="backToStart()" src="./IMG/reload.png" height="32px" width="32px">
 </body>
 
 <script>
 
+// WORKAROUND TO STOP SOUNDS ON PAGE LOAD ....
+
+document.addEventListener("DOMContentLoaded", function() {
+  const audio = document.getElementById('main_song');
+  const note1 = document.getElementById('note1');
+  const note2 = document.getElementById('note2');
+  const note3 = document.getElementById('note3');
+  const note4 = document.getElementById('note4');
+  const note5 = document.getElementById('note5');
+  const note6 = document.getElementById('note6');
+  const note7 = document.getElementById('note7');
+  audio.currentTime = 0;
+  audio.pause();
+  note1.currentTime = 0;
+  note1.pause();
+  note2.currentTime = 0;
+  note2.pause();
+  note3.currentTime = 0;
+  note3.pause();
+  note4.currentTime = 0;
+  note4.pause();
+  note5.currentTime = 0;
+  note5.pause();
+  note6.currentTime = 0;
+  note6.pause();
+  note7.currentTime = 0;
+  note7.pause();
+});
+
+function backToStart() {
+  const audio = document.getElementById('main_song');
+  const note1 = document.getElementById('note1');
+  const note2 = document.getElementById('note2');
+  const note3 = document.getElementById('note3');
+  const note4 = document.getElementById('note4');
+  const note5 = document.getElementById('note5');
+  const note6 = document.getElementById('note6');
+  const note7 = document.getElementById('note7');
+  audio.currentTime = 0;
+  audio.pause();
+  
+}
+
+backToStart();
 
 let a = 1;
 
@@ -216,35 +260,11 @@ note7();
 
 
 
-
-// a.currentTime=0; to go back to start
-// function C(url) {
-//   new Audio(url).play(); 
-// }
-// function D(url) {
-//   new Audio(url).play();
-// }
-// function E(url) {
-//   new Audio(url).play();
-// }
-// function F(url) {
-//   new Audio(url).play();
-// }
-// function G(url) {
-//   new Audio(url).play();
-// }
-// function A(url) {
-//   new Audio(url).play();
-// }
-// function B(url) {
-//   new Audio(url).play();
-
-// }
-
-
+// window.addEventListener('mouseover', touchPlay);
+// function touchPlay() {
   
 
-
+// }
 
      window.addEventListener('keydown', playSound);
    
