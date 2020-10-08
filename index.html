@@ -1,0 +1,363 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="icon" href="./IMG/ico.png">
+    <title>Piano</title>
+</head>
+
+<body>
+  <!-- A('./sounds/A.wav') -->
+ 
+    <div class="keys">
+      <div id="header">
+        <h1>Marc Ribot y Los Cubanos Postizos</h1>
+        <!-- <h3>Play along</h3> -->
+      </div>
+            <div data-key="81" class="key" onclick="note1();">
+              <kbd>Q</kbd>
+                
+              </div>
+              <div data-key="83" class="key" onclick="note2();">
+                <kbd>S</kbd> 
+                
+              </div>
+              <div data-key="68" class="key" onclick="note3();">
+                <kbd>D</kbd>
+                
+              </div>  
+              <div data-key="70" class="key" onclick="note4();">
+                <kbd>F</kbd>
+                
+              </div>
+              <div data-key="71" class="key" onclick="note5();">
+                <kbd>G</kbd>
+               
+              </div>
+              <div data-key="72" class="key" onclick="note6();">
+                <kbd>H</kbd>
+             
+              </div>
+              <div data-key="74" class="key" onclick="note7();">
+                <kbd>J</kbd>
+                
+              </div>
+        
+         
+      </div>
+     
+    <audio id="main_song" src="./sounds/I.mp3"></audio> 
+
+    <audio id="note1" class="note" data-key="81" src="./sounds/A.wav"></audio>
+    <!-- <audio data-key="90" src="./sounds/Db.wav"></audio> -->
+    <audio id="note2"  class="note"  data-key="83" src="./sounds/B.wav"></audio>
+    <!-- <audio data-key="69" src="./sounds/Eb.wav"></audio> -->
+    <audio id="note3"  class="note"  data-key="68" src="./sounds/C.wav"></audio>
+    <audio id="note4"  class="note"  data-key="70" src="./sounds/D.wav"></audio>
+    <!-- <audio data-key="84" src="./sounds/Gb.wav"></audio> -->
+    <audio id="note5"  class="note"  data-key="71" src="./sounds/E.wav"></audio>
+    <!-- <audio data-key="89" src="./sounds/Ab.wav"></audio> -->
+    <audio id="note6"  class="note"  data-key="72" src="./sounds/F.wav"></audio>
+    <!-- <audio data-key="85" src="./sounds/Bb.wav"></audio> -->
+    <audio id="note7"  class="note"  data-key="74" src="./sounds/G.wav"></audio>    
+
+    
+    <div id="player">
+      <img class="previous" data-key="37" src="./IMG/next.png" height="32px" width="32px" onClick="changeAudio();">
+      <div class="pp" data-key="32" onclick="playPause();"><img src="./IMG/pp.png" height="32px" width="32px"></div>
+      <img class="next" data-key="39" src="./IMG/next.png" height="32px" width="32px" onClick="changeAudio();">
+    </div>
+
+    <a class="reload_a" href="./index.html"><img class="reload" src="./IMG/reload.png" height="32px" width="32px"></a>
+</body>
+
+<script>
+
+
+let a = 1;
+
+function changeAudio() {
+  const audio = document.getElementById('main_song');
+  const note1 = document.getElementById('note1');
+  const note2 = document.getElementById('note2');
+  const note3 = document.getElementById('note3');
+  const note4 = document.getElementById('note4');
+  const note5 = document.getElementById('note5');
+  const note6 = document.getElementById('note6');
+  const note7 = document.getElementById('note7');
+  if (a==1) {
+    audio.src = './sounds/I.mp3'; // C 
+
+    note1.src = './sounds/A.wav';
+    note2.src = './sounds/B.wav';
+    note3.src = './sounds/C.wav';
+    note4.src = './sounds/D.wav';
+    note5.src = './sounds/E.wav';
+    note6.src = './sounds/F.wav';
+    note7.src = './sounds/G.wav';
+    a++;
+    
+  }
+  else if (a==2) {
+    audio.src = './sounds/II.mp3'; // E
+
+    note1.src = './sounds/Ab.wav';
+    note2.src = './sounds/A.wav';
+    note3.src = './sounds/B.wav';
+    note4.src = './sounds/Db.wav';
+    note5.src = './sounds/Eb.wav';
+    note6.src = './sounds/E.wav';
+    note7.src = './sounds/Gb.wav';
+    a++;
+  }
+  else if (a==3) {
+    audio.src = './sounds/III.mp3'; // E
+
+    note1.src = './sounds/A.wav';
+    note2.src = './sounds/Bb.wav';
+    note3.src = './sounds/Db.wav';
+    note4.src = './sounds/D.wav';
+    note5.src = './sounds/E.wav';
+    note6.src = './sounds/F.wav';
+    note7.src = './sounds/G.wav';
+    a = 1;
+  }
+
+
+  document.getElementById('main_song').load();
+  document.getElementById('note1').load();
+  document.getElementById('note2').load();
+  document.getElementById('note3').load();
+  document.getElementById('note4').load();
+  document.getElementById('note5').load();
+  document.getElementById('note6').load();
+  document.getElementById('note7').load();
+}
+
+
+changeAudio();
+
+function playPause() {
+      const a = document.getElementById('main_song'); 
+      if(a.paused) {
+        a.play();
+      }
+      else {
+        a.pause();
+        // a.currentTime = 0; for stop button
+      }
+
+
+}
+playPause();
+
+function note1() {
+  const noteI = document.getElementById('note1');
+  noteI.currentTime=0;
+  noteI.volume = 0.6;
+  noteI.play();
+}
+note1();
+
+function note2() {
+  const noteII = document.getElementById('note2');
+  noteII.currentTime=0;
+  noteII.volume = 0.6;
+  noteII.play();
+}
+note2();
+
+function note3() {
+  const noteIII = document.getElementById('note3');
+  noteIII.currentTime=0;
+  noteIII.volume = 0.6;
+  noteIII.play();
+}
+note3();
+
+function note4() {
+  const noteIV = document.getElementById('note4');
+  noteIV.currentTime=0;
+  noteIV.volume = 0.6;
+  noteIV.play();
+}
+note4();
+
+function note5() {
+  const noteV = document.getElementById('note5');
+  noteV.currentTime=0;
+  noteV.volume = 0.6;
+  noteV.play();
+}
+note5();
+
+function note6() {
+  const noteVI = document.getElementById('note6');
+  noteVI.volume = 0.4;
+  noteVI.currentTime=0;
+  noteVI.play();
+}
+note6();
+
+function note7() {
+  const noteVII = document.getElementById('note7');
+  noteVII.volume = 0.4;
+  noteVII.currentTime=0;
+  
+  noteVII.play();
+}
+note7();
+
+
+
+
+
+
+
+
+// a.currentTime=0; to go back to start
+// function C(url) {
+//   new Audio(url).play(); 
+// }
+// function D(url) {
+//   new Audio(url).play();
+// }
+// function E(url) {
+//   new Audio(url).play();
+// }
+// function F(url) {
+//   new Audio(url).play();
+// }
+// function G(url) {
+//   new Audio(url).play();
+// }
+// function A(url) {
+//   new Audio(url).play();
+// }
+// function B(url) {
+//   new Audio(url).play();
+
+// }
+
+
+  
+
+
+
+     window.addEventListener('keydown', playSound);
+   
+
+     function playSound(e) {
+     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); 
+     const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); 
+     if (!audio) return; // stop from running
+     audio.currentTime = 0; // rewind audio to start !
+     audio.play();
+     key.classList.add('playing');
+   }
+  
+
+   function removeTransition(e) {
+     if(e.propertyName !== 'transform') return;
+     this.classList.remove('playing');
+  }
+
+   const keys = document.querySelectorAll('.key');
+   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+
+
+// const main = new Audio("./sounds/I.mp3"); 
+// const playing = false;
+// document.body.onkeydown = function (e){
+//     if(e.keyCode == 32 && !playing){
+//         if ( main.paused ) {
+//               main.play();
+//           } else {
+//               main.pause();
+//     }
+//     }
+// }
+
+// const keypress = document.querySelectorAll('.key');
+
+//   keypress.forEach(key => key.addEventListener('mouseover', toggleOpen));
+  
+
+//   function toggleOpen() {
+//     this.classList.toggle('open');    
+      
+//   }
+//   keypress.forEach(key => key.addEventListener('mouseout', toggleClose));
+
+//   function toggleClose() {
+//     this.classList.remove('open');      
+//   }
+
+// const C = new Audio("./sounds/C.wav");
+// const Db = new Audio("./sounds/Db.wav");
+// const D = new Audio("./sounds/D.wav");
+// const Eb = new Audio("./sounds/Eb.wav");
+// const E = new Audio("./sounds/E.wav");
+// const F = new Audio("./sounds/F.wav");
+// const Gb = new Audio("./sounds/Gb.wav");
+// const G = new Audio("./sounds/G.wav");
+// const Ab = new Audio("./sounds/Ab.wav");
+// const A = new Audio("./sounds/A.wav");
+// const Bb = new Audio("./sounds/Bb.wav");
+// const B = new Audio("./sounds/B.wav");
+
+// const playing = false;
+// document.body.onkeydown = function (e){
+//     if(e.keyCode == 81 && !playing){
+//         C.play();
+//         playing=true;
+//     } if(e.keyCode == 90 && !playing){
+//         Db.play();
+//         playing=true;
+//     } if(e.keyCode == 83 && !playing){
+//         D.play();
+//         playing=true;
+//     } if(e.keyCode == 69 && !playing){
+//         Eb.play();
+//         playing=true;
+//     } if(e.keyCode == 68 && !playing){
+//         E.play();
+//         playing=true;
+//     } if(e.keyCode == 70 && !playing){
+//         F.play();
+//         playing=true;
+//     } if(e.keyCode == 84 && !playing){
+//         Gb.play();
+//         playing=true;
+//     } if(e.keyCode == 71 && !playing){
+//         G.play();
+//         playing=true;
+//     } if(e.keyCode == 89 && !playing){
+//         Ab.play();
+//         playing=true;
+//     } if(e.keyCode == 72 && !playing){
+//         A.play();
+//         playing=true;
+//     } if(e.keyCode == 85 && !playing){
+//         Bb.play();
+//         playing=true;
+//     } if(e.keyCode == 74 && !playing){
+//         B.play();
+//         playing=true;
+//     }
+// }    
+
+
+// document.body.onkeyup = function (e){
+//     if(e.keyCode == 81){
+//         C.pause();
+//         playing=false;
+//     } }
+ 
+    
+
+</script>
+</html>
