@@ -1,11 +1,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="icon" href="./IMG/ico.png">
-    <title>Piano</title>
+    <title>Piano : Marc Ribot y Los Cubanos Postizos</title>
+
+
+
 </head>
 
 <body>
@@ -13,44 +16,40 @@
   <div id="header">
     <h1>Marc Ribot y Los Cubanos Postizos</h1>
     <!-- <h3>Play along</h3> -->
-    <div>
-      <ul class='hamburger_menu'>
-        <li>
-          <img src="./IMG/hamburger.png" height="32px" width="32px" alt="sss" />
-          <ul class='sub-menu'>
-            <li><b>Keys:</b> Q to J &nbsp&nbsp <b>Play / Pause :</b> Spacebar &nbsp&nbsp <b>Rewind:</b> R &nbsp&nbsp <b>Next Track:</b> Left or Right Arrow</li>
-          </ul>
-        </li>
-        
-      </ul>
+    <div class='hamburger_menu'>
+      <span class="show_help"data-key="81"><img src="./IMG/hamburger.png" class="burger_img" height="32px" width="32px" alt="sss" />
+        <div class='sub-menu'>
+          <span><b>Keys:</b> Q to J &nbsp&nbsp <b>Play / Pause :</b> Spacebar &nbsp&nbsp <b>Rewind:</b> R &nbsp&nbsp <b>Next Track:</b>&nbsp &#8592;&nbsp or&nbsp &#8594; </span>
+        </div>
+      </span>
     </div>
   </div>
   
   <div class="keys"> 
-    <div data-key="81" id="key1" class="key" ontouchstart="note1();">
-      <kbd>Q</kbd>                
+    <div data-key="81" id="key1" class="key">
+      <kbd></kbd>                
     </div>
-    <div data-key="83" class="key" ontouchstart="note2();">
-      <kbd>S</kbd>          
+    <div data-key="83" class="key">
+      <kbd></kbd>          
     </div>
-    <div data-key="68" class="key" ontouchstart="note3();">
-      <kbd>D</kbd>            
+    <div data-key="68" class="key">
+      <kbd></kbd>            
     </div>  
-    <div data-key="70" class="key" ontouchstart="note4();">
-      <kbd>F</kbd>            
+    <div data-key="70" class="key">
+      <kbd></kbd>            
     </div>
-    <div data-key="71" class="key" ontouchstart="note5();">
-      <kbd>G</kbd>               
+    <div data-key="71" class="key">
+      <kbd></kbd>               
     </div>
-    <div data-key="72" class="key" ontouchstart="note6();">
-      <kbd>H</kbd>        
+    <div data-key="72" class="key">
+      <kbd></kbd>        
     </div>
-    <div data-key="74" class="key" ontouchstart="note7();">
-      <kbd>J</kbd>            
+    <div data-key="74" class="key">
+      <kbd></kbd>            
     </div>     
   </div>
      
-  <audio id="main_song" src="./sounds/I.mp3" autoplay=0></audio> 
+  <audio id="main_song" src="./sounds/I.mp3" muted></audio> 
   <audio id="note1" class="note" data-key="81" src="./sounds/A.wav"></audio>
   <audio id="note2"  class="note"  data-key="83" src="./sounds/B.wav"></audio>
   <audio id="note3"  class="note"  data-key="68" src="./sounds/C.wav"></audio>
@@ -60,256 +59,36 @@
   <audio id="note7"  class="note"  data-key="74" src="./sounds/G.wav"></audio>    
     
   <div id="player">
-    <img class="previous" data-key="37" src="./IMG/next.png" height="32px" width="32px" ontouchstart="changeAudio();">
-    <div class="pp" data-key="32" ontouchstart="playPause();"><img src="./IMG/pp.png" height="32px" width="32px"></div>
-    <img class="next" data-key="39" src="./IMG/next.png" height="32px" width="32px" ontouchstart="changeAudio();">
+    <img class="previous" data-key="37" src="./IMG/nextleft.png" height="32px" width="32px">
+    <div class="pp" data-key="32" ><img src="./IMG/pp.png" height="32px" width="32px"></div>
+    <img class="next" data-key="39" src="./IMG/next.png" height="32px" width="32px">
   </div>
     
-  <img class="reload" data-key="82" ontouchstart="backToStart()" src="./IMG/reload.png" height="32px" width="32px">
+  <img class="reload" data-key="82" src="./IMG/reload_white2.png" height="32px" width="32px">
 
 </body>
+<footer><a href="https://www.marcribot.com/" target="_blank">all musical credits go to<br>Marc Ribot Y Los Cubanos Postizos</a></footer>
 
-<div>
-  <ul class='hamburger_menu'>
-    <li>
-      <img src="./IMG/hamburger.png" height="32px" width="32px" alt="sss" />
-      <ul class='sub-menu'>
-        <li><b>Keys:</b> Q to J &nbsp&nbsp <b>Play / Pause :</b> Spacebar &nbsp&nbsp <b>Rewind:</b> R &nbsp&nbsp <b>Next Track:</b> Left or Right Arrow</li>
-      </ul>
-    </li>  
-  </ul>
-</div>
 
 
 
 
 
 <script>
-  
-function removeTransition(e) {
-    
-     this.classList.remove('playing');
-  }
 
-   const keys = document.querySelectorAll('.key');
-  //  keys.forEach(key => key.addEventListener('touchend', removeTransition)); too fast for phone
-   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-
-// WORKAROUND TO STOP SOUNDS ON PAGE LOAD ....
-
-document.addEventListener("DOMContentLoaded", function() {
-  const audio = document.getElementById('main_song');
-  const note1 = document.getElementById('note1');
-  const note2 = document.getElementById('note2');
-  const note3 = document.getElementById('note3');
-  const note4 = document.getElementById('note4');
-  const note5 = document.getElementById('note5');
-  const note6 = document.getElementById('note6');
-  const note7 = document.getElementById('note7');
-  const keys = document.querySelectorAll('.key');
-  keys.classList.remove('playing');
-  audio.currentTime = 0;
-  audio.pause();
-  note1.currentTime = 0;
-  note1.pause();
-  note2.currentTime = 0;
-  note2.pause();
-  note3.currentTime = 0;
-  note3.pause();
-  note4.currentTime = 0;
-  note4.pause();
-  note5.currentTime = 0;
-  note5.pause();
-  note6.currentTime = 0;
-  note6.pause();
-  note7.currentTime = 0;
-  note7.pause();
-});
-
-function backToStart() {
-  const audio = document.getElementById('main_song');
-  const note1 = document.getElementById('note1');
-  const note2 = document.getElementById('note2');
-  const note3 = document.getElementById('note3');
-  const note4 = document.getElementById('note4');
-  const note5 = document.getElementById('note5');
-  const note6 = document.getElementById('note6');
-  const note7 = document.getElementById('note7');
-  audio.currentTime = 0;
-  if(audio.paused) {
-        return;
-      }
-      else {
-        audio.play();
-        // a.currentTime = 0; for stop button
-      }
-//  audio.play(); // play or not ? leave a gap ? sound effect ??
-  
-}
-
-
-
-                        // TOUCHSCREEN // 
-
-
-backToStart();
 
 let a = 1;
+let b = 1;
+                        // KEYS //
 
-function changeAudio() {
-  const audio = document.getElementById('main_song');
-  const note1 = document.getElementById('note1');
-  const note2 = document.getElementById('note2');
-  const note3 = document.getElementById('note3');
-  const note4 = document.getElementById('note4');
-  const note5 = document.getElementById('note5');
-  const note6 = document.getElementById('note6');
-  const note7 = document.getElementById('note7');
-  if (a==1) {
-    audio.src = './sounds/I.mp3'; // C 
-
-    note1.src = './sounds/A.wav';
-    note2.src = './sounds/B.wav';
-    note3.src = './sounds/C.wav';
-    note4.src = './sounds/D.wav';
-    note5.src = './sounds/E.wav';
-    note6.src = './sounds/F.wav';
-    note7.src = './sounds/G.wav';
-    a++;
+function removeTransition(e) {
     
-  }
-  else if (a==2) {
-    audio.src = './sounds/II.mp3'; // E
-
-    note1.src = './sounds/Ab.wav';
-    note2.src = './sounds/A.wav';
-    note3.src = './sounds/B.wav';
-    note4.src = './sounds/Db.wav';
-    note5.src = './sounds/Eb.wav';
-    note6.src = './sounds/E.wav';
-    note7.src = './sounds/Gb.wav';
-    a++;
-  }
-  else if (a==3) {
-    audio.src = './sounds/III.mp3'; // E
-
-    note1.src = './sounds/A.wav';
-    note2.src = './sounds/Bb.wav';
-    note3.src = './sounds/Db.wav';
-    note4.src = './sounds/D.wav';
-    note5.src = './sounds/E.wav';
-    note6.src = './sounds/F.wav';
-    note7.src = './sounds/G.wav';
-    a = 1;
-  }
-
-
-  document.getElementById('main_song').load();
-  document.getElementById('note1').load();
-  document.getElementById('note2').load();
-  document.getElementById('note3').load();
-  document.getElementById('note4').load();
-  document.getElementById('note5').load();
-  document.getElementById('note6').load();
-  document.getElementById('note7').load();
+  this.classList.remove('playing');
 }
 
-
-changeAudio();
-
-function playPause() {
-      const a = document.getElementById('main_song'); 
-      if(a.paused) {
-        a.play();
-      }
-      else {
-        a.pause();
-      }
-
-
-}
-playPause();
-
-function note1() {
-  const noteI = document.getElementById('note1');
-  const key = document.getElementsByClassName("key")[0]; //it's an array duh
-  noteI.currentTime=0;
-  noteI.volume = 0.5;
-  noteI.play();
-  key.classList.add('playing');
- 
-
-}
-note1();
-
-function note2() {
-  const noteII = document.getElementById('note2');
-  const key = document.getElementsByClassName("key")[1];
-  noteII.currentTime=0;
-  noteII.volume = 0.5;
-  noteII.play();
-  key.classList.add('playing');
-
-  
-}
-note2();
-
-function note3() {
-  const noteIII = document.getElementById('note3');
-  const key = document.getElementsByClassName("key")[2];
-  noteIII.currentTime=0;
-  noteIII.volume = 0.5;
-  noteIII.play();
-  key.classList.add('playing');
-}
-note3();
-
-function note4() {
-  const noteIV = document.getElementById('note4');
-  const key = document.getElementsByClassName("key")[3];
-  noteIV.currentTime=0;
-  noteIV.volume = 0.5;
-  noteIV.play();
-  key.classList.add('playing');
-}
-note4();
-
-function note5() {
-  const noteV = document.getElementById('note5');
-  const key = document.getElementsByClassName("key")[4];
-  noteV.currentTime=0;
-  noteV.volume = 0.5;
-  noteV.play();
-  key.classList.add('playing');
-}
-note5();
-
-function note6() {
-  const noteVI = document.getElementById('note6');
-  const key = document.getElementsByClassName("key")[5];
-  noteVI.volume = 0.3;
-  noteVI.currentTime=0;
-  noteVI.play();
-  key.classList.add('playing');
-}
-note6();
-
-function note7() {
-  const noteVII = document.getElementById('note7');
-  const key = document.getElementsByClassName("key")[6];
-  noteVII.volume = 0.3;
-  noteVII.currentTime=0;
-  noteVII.play();
-  key.classList.add('playing');
-}
-note7();
-
-
-
-
-                        // COMPUTER //
-
-
+const keys = document.querySelectorAll('.key');
+ //  keys.forEach(key => key.addEventListener('touchend', removeTransition)); too fast for phone
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
 window.addEventListener('keydown', controls);
     
@@ -335,7 +114,11 @@ function controls(e) {
     }
   }
   else if (e.keyCode == 32) { // play pause
-    const a = document.getElementById('main_song'); 
+    const a = document.getElementById('main_song');
+    a.muted = false;
+    const pp = document.getElementsByClassName("pp")[0];
+    pp.classList.add('p');  
+    setTimeout(() => { pp.classList.remove('p'); }, 100);
     if(a.paused) {
       a.play();
     }
@@ -343,7 +126,7 @@ function controls(e) {
       a.pause();
     }
   }
-  else if (e.keyCode == 37 || e.keyCode == 39) { // next song
+  else if (e.keyCode == 37) { // previous song
     const audio = document.getElementById('main_song');
     const note1 = document.getElementById('note1');
     const note2 = document.getElementById('note2');
@@ -352,19 +135,33 @@ function controls(e) {
     const note5 = document.getElementById('note5');
     const note6 = document.getElementById('note6');
     const note7 = document.getElementById('note7');
-    if (a==1) {
-      audio.src = './sounds/I.mp3'; // C 
+    const prev = document.getElementsByClassName("previous")[0];
+    prev.classList.add('n');  
+    setTimeout(() => { prev.classList.remove('n'); }, 100);
+    audio.src = './sounds/I.mp3'; // C 
 
-      note1.src = './sounds/A.wav';
-      note2.src = './sounds/B.wav';
-      note3.src = './sounds/C.wav';
-      note4.src = './sounds/D.wav';
-      note5.src = './sounds/E.wav';
-      note6.src = './sounds/F.wav';
-      note7.src = './sounds/G.wav';
-      a++;
+    note1.src = './sounds/A.wav';
+    note2.src = './sounds/B.wav';
+    note3.src = './sounds/C.wav';
+    note4.src = './sounds/D.wav';
+    note5.src = './sounds/E.wav';
+    note6.src = './sounds/F.wav';
+    note7.src = './sounds/G.wav';
+    if (b == 1) {
+    audio.src = './sounds/III.mp3'; // D- harm
+
+    note1.src = './sounds/A.wav';
+    note2.src = './sounds/Bb.wav';
+    note3.src = './sounds/Db.wav';
+    note4.src = './sounds/D.wav';
+    note5.src = './sounds/E.wav';
+    note6.src = './sounds/F.wav';
+    note7.src = './sounds/G.wav';
+    b++;
+    a = 3;
+
     }
-    else if (a==2) {
+    else if (b==2) {
       audio.src = './sounds/II.mp3'; // E
 
       note1.src = './sounds/Ab.wav';
@@ -374,18 +171,20 @@ function controls(e) {
       note5.src = './sounds/Eb.wav';
       note6.src = './sounds/E.wav';
       note7.src = './sounds/Gb.wav';
-      a++;
+      b++;
+      a = 2;
     }
-    else if (a==3) {
-      audio.src = './sounds/III.mp3'; // E
+    else if (b==3) {
+      audio.src = './sounds/I.mp3'; // C 
 
       note1.src = './sounds/A.wav';
-      note2.src = './sounds/Bb.wav';
-      note3.src = './sounds/Db.wav';
+      note2.src = './sounds/B.wav';
+      note3.src = './sounds/C.wav';
       note4.src = './sounds/D.wav';
       note5.src = './sounds/E.wav';
       note6.src = './sounds/F.wav';
       note7.src = './sounds/G.wav';
+      b=1;
       a = 1;
     }
     document.getElementById('main_song').load();
@@ -396,6 +195,88 @@ function controls(e) {
     document.getElementById('note5').load();
     document.getElementById('note6').load();
     document.getElementById('note7').load();
+    audio.play();
+    audio.muted = false;
+
+  } 
+
+  else if (e.keyCode == 39) { // next song
+    const audio = document.getElementById('main_song');
+    const note1 = document.getElementById('note1');
+    const note2 = document.getElementById('note2');
+    const note3 = document.getElementById('note3');
+    const note4 = document.getElementById('note4');
+    const note5 = document.getElementById('note5');
+    const note6 = document.getElementById('note6');
+    const note7 = document.getElementById('note7');
+    const nextt = document.getElementsByClassName("next")[0];
+    nextt.classList.add('n');  
+    setTimeout(() => { nextt.classList.remove('n'); }, 100);
+    audio.src = './sounds/I.mp3'; // C 
+    note1.src = './sounds/A.wav';
+    note2.src = './sounds/B.wav';
+    note3.src = './sounds/C.wav';
+    note4.src = './sounds/D.wav';
+    note5.src = './sounds/E.wav';
+    note6.src = './sounds/F.wav';
+    note7.src = './sounds/G.wav';
+    if (a == 1) {
+      audio.src = './sounds/II.mp3'; // E
+      
+      note1.src = './sounds/Ab.wav';
+      note2.src = './sounds/A.wav';
+      note3.src = './sounds/B.wav';
+      note4.src = './sounds/Db.wav';
+      note5.src = './sounds/Eb.wav';
+      note6.src = './sounds/E.wav';
+      note7.src = './sounds/Gb.wav';
+      a++;
+      b = 3;
+    }
+    else if (a==2) {
+      audio.src = './sounds/III.mp3'; // D- harm
+
+      note1.src = './sounds/A.wav';
+      note2.src = './sounds/Bb.wav';
+      note3.src = './sounds/Db.wav';
+      note4.src = './sounds/D.wav';
+      note5.src = './sounds/E.wav';
+      note6.src = './sounds/F.wav';
+      note7.src = './sounds/G.wav';
+      a++;
+      b = 2;
+    }
+    else if (a==3) {
+      audio.src = './sounds/I.mp3'; // C 
+
+      note1.src = './sounds/A.wav';
+      note2.src = './sounds/B.wav';
+      note3.src = './sounds/C.wav';
+      note4.src = './sounds/D.wav';
+      note5.src = './sounds/E.wav';
+      note6.src = './sounds/F.wav';
+      note7.src = './sounds/G.wav';
+      a = 1;
+      b = 1;
+    }
+    document.getElementById('main_song').load();
+    document.getElementById('note1').load();
+    document.getElementById('note2').load();
+    document.getElementById('note3').load();
+    document.getElementById('note4').load();
+    document.getElementById('note5').load();
+    document.getElementById('note6').load();
+    document.getElementById('note7').load();
+    audio.play();
+    audio.muted = false;
+  } else if (e.keyCode == 73) {
+      const menu = document.getElementsByClassName("sub-menu")[0];
+      const burger = document.getElementsByClassName("burger_img")[0];
+      menu.classList.add('button_vis');
+      burger.classList.add('button_vis');
+      setTimeout(() => { 
+      menu.classList.remove('button_vis');
+      burger.classList.remove('button_vis');}, 1500);
   }
      
   else { // keyboard
@@ -407,6 +288,264 @@ function controls(e) {
     key.classList.add('playing');
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+                // CLICKS //
+
+
+document.getElementsByClassName("pp")[0].addEventListener("mousedown", function(){
+  const a = document.getElementById('main_song');
+  a.muted = false;
+      if(a.paused) {
+        a.play();
+      }
+      else {
+        a.pause();
+      }
+});
+
+
+
+
+document.getElementsByClassName("next")[0].addEventListener("mousedown", next);
+
+
+
+function next(){
+  const audio = document.getElementById('main_song');
+  const note1 = document.getElementById('note1');
+  const note2 = document.getElementById('note2');
+  const note3 = document.getElementById('note3');
+  const note4 = document.getElementById('note4');
+  const note5 = document.getElementById('note5');
+  const note6 = document.getElementById('note6');
+  const note7 = document.getElementById('note7');
+  audio.src = './sounds/I.mp3'; // C 
+  note1.src = './sounds/A.wav';
+  note2.src = './sounds/B.wav';
+  note3.src = './sounds/C.wav';
+  note4.src = './sounds/D.wav';
+  note5.src = './sounds/E.wav';
+  note6.src = './sounds/F.wav';
+  note7.src = './sounds/G.wav';
+  if (a == 1) {
+    audio.src = './sounds/II.mp3'; // E
+    
+    note1.src = './sounds/Ab.wav';
+    note2.src = './sounds/A.wav';
+    note3.src = './sounds/B.wav';
+    note4.src = './sounds/Db.wav';
+    note5.src = './sounds/Eb.wav';
+    note6.src = './sounds/E.wav';
+    note7.src = './sounds/Gb.wav';
+    a++;
+    b = 3;
+  }
+  else if (a==2) {
+    audio.src = './sounds/III.mp3'; // D- harm
+
+    note1.src = './sounds/A.wav';
+    note2.src = './sounds/Bb.wav';
+    note3.src = './sounds/Db.wav';
+    note4.src = './sounds/D.wav';
+    note5.src = './sounds/E.wav';
+    note6.src = './sounds/F.wav';
+    note7.src = './sounds/G.wav';
+    a++;
+    b = 2;
+  }
+  else if (a==3) {
+    audio.src = './sounds/I.mp3'; // C 
+
+    note1.src = './sounds/A.wav';
+    note2.src = './sounds/B.wav';
+    note3.src = './sounds/C.wav';
+    note4.src = './sounds/D.wav';
+    note5.src = './sounds/E.wav';
+    note6.src = './sounds/F.wav';
+    note7.src = './sounds/G.wav';
+    a = 1;
+    b = 1;
+  }
+  document.getElementById('main_song').load();
+  document.getElementById('note1').load();
+  document.getElementById('note2').load();
+  document.getElementById('note3').load();
+  document.getElementById('note4').load();
+  document.getElementById('note5').load();
+  document.getElementById('note6').load();
+  document.getElementById('note7').load();
+  audio.play();
+  audio.muted = false;
+
+}
+
+
+document.getElementsByClassName("previous")[0].addEventListener("mousedown", previous);
+
+
+
+function previous (){
+  const audio = document.getElementById('main_song');
+  const note1 = document.getElementById('note1');
+  const note2 = document.getElementById('note2');
+  const note3 = document.getElementById('note3');
+  const note4 = document.getElementById('note4');
+  const note5 = document.getElementById('note5');
+  const note6 = document.getElementById('note6');
+  const note7 = document.getElementById('note7');
+  audio.src = './sounds/I.mp3'; // C 
+
+  note1.src = './sounds/A.wav';
+  note2.src = './sounds/B.wav';
+  note3.src = './sounds/C.wav';
+  note4.src = './sounds/D.wav';
+  note5.src = './sounds/E.wav';
+  note6.src = './sounds/F.wav';
+  note7.src = './sounds/G.wav';
+  if (b == 1) {
+  audio.src = './sounds/III.mp3'; // D- harm
+
+  note1.src = './sounds/A.wav';
+  note2.src = './sounds/Bb.wav';
+  note3.src = './sounds/Db.wav';
+  note4.src = './sounds/D.wav';
+  note5.src = './sounds/E.wav';
+  note6.src = './sounds/F.wav';
+  note7.src = './sounds/G.wav';
+  b++;
+  a = 3;
+
+  }
+  else if (b==2) {
+    audio.src = './sounds/II.mp3'; // E
+
+    note1.src = './sounds/Ab.wav';
+    note2.src = './sounds/A.wav';
+    note3.src = './sounds/B.wav';
+    note4.src = './sounds/Db.wav';
+    note5.src = './sounds/Eb.wav';
+    note6.src = './sounds/E.wav';
+    note7.src = './sounds/Gb.wav';
+    b++;
+    a = 2;
+  }
+  else if (b==3) {
+    audio.src = './sounds/I.mp3'; // C 
+
+    note1.src = './sounds/A.wav';
+    note2.src = './sounds/B.wav';
+    note3.src = './sounds/C.wav';
+    note4.src = './sounds/D.wav';
+    note5.src = './sounds/E.wav';
+    note6.src = './sounds/F.wav';
+    note7.src = './sounds/G.wav';
+    b=1;
+    a = 1;
+  }
+  document.getElementById('main_song').load();
+  document.getElementById('note1').load();
+  document.getElementById('note2').load();
+  document.getElementById('note3').load();
+  document.getElementById('note4').load();
+  document.getElementById('note5').load();
+  document.getElementById('note6').load();
+  document.getElementById('note7').load();
+  audio.play();
+  audio.muted = false;
+
+}
+
+document.getElementsByClassName("reload")[0].addEventListener("mousedown", function(){
+  const audio = document.getElementById('main_song');
+  const note1 = document.getElementById('note1');
+  const note2 = document.getElementById('note2');
+  const note3 = document.getElementById('note3');
+  const note4 = document.getElementById('note4');
+  const note5 = document.getElementById('note5');
+  const note6 = document.getElementById('note6');
+  const note7 = document.getElementById('note7');
+  audio.currentTime = 0;
+  if(audio.paused) {
+        return;
+      }
+      else {
+        audio.play();
+      }
+});
+
+
+document.getElementsByClassName("key")[0].addEventListener("mousedown", function(){
+  const noteI = document.getElementById('note1');
+  const key = document.getElementsByClassName("key")[0]; //it's an array duh
+  noteI.currentTime=0;
+  noteI.volume = 0.5;
+  noteI.play();
+  key.classList.add('playing');
+});
+
+document.getElementsByClassName("key")[1].addEventListener("mousedown", function(){
+  const noteII = document.getElementById('note2');
+  const key = document.getElementsByClassName("key")[1];
+  noteII.currentTime=0;
+  noteII.volume = 0.5;
+  noteII.play();
+  key.classList.add('playing');
+});
+
+document.getElementsByClassName("key")[2].addEventListener("mousedown", function(){
+  const noteIII = document.getElementById('note3');
+const key = document.getElementsByClassName("key")[2];
+noteIII.currentTime=0;
+noteIII.volume = 0.5;
+noteIII.play();
+key.classList.add('playing');
+});
+
+document.getElementsByClassName("key")[3].addEventListener("mousedown", function(){
+  const noteIV = document.getElementById('note4');
+  const key = document.getElementsByClassName("key")[3];
+  noteIV.currentTime=0;
+  noteIV.volume = 0.5;
+  noteIV.play();
+  key.classList.add('playing');
+});
+
+document.getElementsByClassName("key")[4].addEventListener("mousedown", function(){
+  const noteV = document.getElementById('note5');
+  const key = document.getElementsByClassName("key")[4];
+  noteV.currentTime=0;
+  noteV.volume = 0.5;
+  noteV.play();
+  key.classList.add('playing');
+});
+
+document.getElementsByClassName("key")[5].addEventListener("mousedown", function(){
+  const noteVI = document.getElementById('note6');
+  const key = document.getElementsByClassName("key")[5];
+  noteVI.volume = 0.3;
+  noteVI.currentTime=0;
+  noteVI.play();
+  key.classList.add('playing');
+});
+
+document.getElementsByClassName("key")[6].addEventListener("mousedown", function(){
+  const noteVII = document.getElementById('note7');
+  const key = document.getElementsByClassName("key")[6];
+  noteVII.volume = 0.3;
+  noteVII.currentTime=0;
+  noteVII.play();
+  key.classList.add('playing');
+});
 
 
 </script>
