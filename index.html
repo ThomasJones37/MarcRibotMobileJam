@@ -10,66 +10,63 @@
 
 <body>
   
-    <div class="keys">
-      <div id="header">
-        <h1>Marc Ribot y Los Cubanos Postizos</h1>
-        <!-- <h3>Play along</h3> -->
-      </div>
-            <div data-key="81" id="key1" class="key" ontouchstart="note1();">
-              <kbd>Q</kbd>
-                
-              </div>
-              <div data-key="83" class="key" ontouchstart="note2();">
-                <kbd>S</kbd> 
-                
-              </div>
-              <div data-key="68" class="key" ontouchstart="note3();">
-                <kbd>D</kbd>
-                
-              </div>  
-              <div data-key="70" class="key" ontouchstart="note4();">
-                <kbd>F</kbd>
-                
-              </div>
-              <div data-key="71" class="key" ontouchstart="note5();">
-                <kbd>G</kbd>
-               
-              </div>
-              <div data-key="72" class="key" ontouchstart="note6();">
-                <kbd>H</kbd>
-             
-              </div>
-              <div data-key="74" class="key" ontouchstart="note7();">
-                <kbd>J</kbd>
-                
-              </div>
+  <div id="header">
+    <h1>Marc Ribot y Los Cubanos Postizos</h1>
+    <!-- <h3>Play along</h3> -->
+    <div>
+      <ul class='hamburger_menu'>
+        <li>
+          <img src="./IMG/hamburger.png" height="32px" width="32px" alt="sss" />
+          <ul class='sub-menu'>
+            <li><b>Keys:</b> Q to J &nbsp&nbsp <b>Play / Pause :</b> Spacebar &nbsp&nbsp <b>Rewind:</b> R &nbsp&nbsp <b>Next Track:</b> Left or Right Arrow</li>
+          </ul>
+        </li>
         
-         
-      </div>
-     
-    <audio id="main_song" src="./sounds/I.mp3" autoplay=0></audio> 
-
-    <audio id="note1" class="note" data-key="81" src="./sounds/A.wav"></audio>
-    
-    <audio id="note2"  class="note"  data-key="83" src="./sounds/B.wav"></audio>
-    
-    <audio id="note3"  class="note"  data-key="68" src="./sounds/C.wav"></audio>
-    <audio id="note4"  class="note"  data-key="70" src="./sounds/D.wav"></audio>
-    
-    <audio id="note5"  class="note"  data-key="71" src="./sounds/E.wav"></audio>
-    
-    <audio id="note6"  class="note"  data-key="72" src="./sounds/F.wav"></audio>
-    
-    <audio id="note7"  class="note"  data-key="74" src="./sounds/G.wav"></audio>    
-
-    <!-- need to use on touch / touchstart whatever it is !-->
-    <div id="player">
-      <img class="previous" data-key="37" src="./IMG/next.png" height="32px" width="32px" ontouchstart="changeAudio();">
-      <div class="pp" data-key="32" ontouchstart="playPause();"><img src="./IMG/pp.png" height="32px" width="32px"></div>
-      <img class="next" data-key="39" src="./IMG/next.png" height="32px" width="32px" ontouchstart="changeAudio();">
+      </ul>
     </div>
+  </div>
+  
+  <div class="keys"> 
+    <div data-key="81" id="key1" class="key" ontouchstart="note1();">
+      <kbd>Q</kbd>                
+    </div>
+    <div data-key="83" class="key" ontouchstart="note2();">
+      <kbd>S</kbd>          
+    </div>
+    <div data-key="68" class="key" ontouchstart="note3();">
+      <kbd>D</kbd>            
+    </div>  
+    <div data-key="70" class="key" ontouchstart="note4();">
+      <kbd>F</kbd>            
+    </div>
+    <div data-key="71" class="key" ontouchstart="note5();">
+      <kbd>G</kbd>               
+    </div>
+    <div data-key="72" class="key" ontouchstart="note6();">
+      <kbd>H</kbd>        
+    </div>
+    <div data-key="74" class="key" ontouchstart="note7();">
+      <kbd>J</kbd>            
+    </div>     
+  </div>
+     
+  <audio id="main_song" src="./sounds/I.mp3" autoplay=0></audio> 
+  <audio id="note1" class="note" data-key="81" src="./sounds/A.wav"></audio>
+  <audio id="note2"  class="note"  data-key="83" src="./sounds/B.wav"></audio>
+  <audio id="note3"  class="note"  data-key="68" src="./sounds/C.wav"></audio>
+  <audio id="note4"  class="note"  data-key="70" src="./sounds/D.wav"></audio>
+  <audio id="note5"  class="note"  data-key="71" src="./sounds/E.wav"></audio>
+  <audio id="note6"  class="note"  data-key="72" src="./sounds/F.wav"></audio>
+  <audio id="note7"  class="note"  data-key="74" src="./sounds/G.wav"></audio>    
     
-    <img class="reload" data-key="82" ontouchstart="backToStart()" src="./IMG/reload.png" height="32px" width="32px">
+  <div id="player">
+    <img class="previous" data-key="37" src="./IMG/next.png" height="32px" width="32px" ontouchstart="changeAudio();">
+    <div class="pp" data-key="32" ontouchstart="playPause();"><img src="./IMG/pp.png" height="32px" width="32px"></div>
+    <img class="next" data-key="39" src="./IMG/next.png" height="32px" width="32px" ontouchstart="changeAudio();">
+  </div>
+    
+  <img class="reload" data-key="82" ontouchstart="backToStart()" src="./IMG/reload.png" height="32px" width="32px">
+
 </body>
 
 <div>
@@ -79,8 +76,7 @@
       <ul class='sub-menu'>
         <li><b>Keys:</b> Q to J &nbsp&nbsp <b>Play / Pause :</b> Spacebar &nbsp&nbsp <b>Rewind:</b> R &nbsp&nbsp <b>Next Track:</b> Left or Right Arrow</li>
       </ul>
-    </li>
-    
+    </li>  
   </ul>
 </div>
 
@@ -88,16 +84,15 @@
 
 
 
-
-
 <script>
+  
 function removeTransition(e) {
     
      this.classList.remove('playing');
   }
 
    const keys = document.querySelectorAll('.key');
-  //  keys.forEach(key => key.addEventListener('touchend', removeTransition)); to fast for phone
+  //  keys.forEach(key => key.addEventListener('touchend', removeTransition)); too fast for phone
    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
 // WORKAROUND TO STOP SOUNDS ON PAGE LOAD ....
@@ -151,6 +146,11 @@ function backToStart() {
 //  audio.play(); // play or not ? leave a gap ? sound effect ??
   
 }
+
+
+
+                        // TOUCHSCREEN // 
+
 
 backToStart();
 
@@ -224,7 +224,6 @@ function playPause() {
       }
       else {
         a.pause();
-        // a.currentTime = 0; for stop button
       }
 
 
@@ -235,7 +234,7 @@ function note1() {
   const noteI = document.getElementById('note1');
   const key = document.getElementsByClassName("key")[0]; //it's an array duh
   noteI.currentTime=0;
-  noteI.volume = 0.6;
+  noteI.volume = 0.5;
   noteI.play();
   key.classList.add('playing');
  
@@ -247,7 +246,7 @@ function note2() {
   const noteII = document.getElementById('note2');
   const key = document.getElementsByClassName("key")[1];
   noteII.currentTime=0;
-  noteII.volume = 0.6;
+  noteII.volume = 0.5;
   noteII.play();
   key.classList.add('playing');
 
@@ -259,7 +258,7 @@ function note3() {
   const noteIII = document.getElementById('note3');
   const key = document.getElementsByClassName("key")[2];
   noteIII.currentTime=0;
-  noteIII.volume = 0.6;
+  noteIII.volume = 0.5;
   noteIII.play();
   key.classList.add('playing');
 }
@@ -269,7 +268,7 @@ function note4() {
   const noteIV = document.getElementById('note4');
   const key = document.getElementsByClassName("key")[3];
   noteIV.currentTime=0;
-  noteIV.volume = 0.6;
+  noteIV.volume = 0.5;
   noteIV.play();
   key.classList.add('playing');
 }
@@ -279,7 +278,7 @@ function note5() {
   const noteV = document.getElementById('note5');
   const key = document.getElementsByClassName("key")[4];
   noteV.currentTime=0;
-  noteV.volume = 0.6;
+  noteV.volume = 0.5;
   noteV.play();
   key.classList.add('playing');
 }
@@ -288,7 +287,7 @@ note5();
 function note6() {
   const noteVI = document.getElementById('note6');
   const key = document.getElementsByClassName("key")[5];
-  noteVI.volume = 0.4;
+  noteVI.volume = 0.3;
   noteVI.currentTime=0;
   noteVI.play();
   key.classList.add('playing');
@@ -298,7 +297,7 @@ note6();
 function note7() {
   const noteVII = document.getElementById('note7');
   const key = document.getElementsByClassName("key")[6];
-  noteVII.volume = 0.4;
+  noteVII.volume = 0.3;
   noteVII.currentTime=0;
   noteVII.play();
   key.classList.add('playing');
@@ -308,152 +307,108 @@ note7();
 
 
 
+                        // COMPUTER //
 
 
 
-// window.addEventListener('mouseover', touchPlay);
-// function touchPlay() {
-  
-
-// }
-
-     window.addEventListener('keydown', controls);
-     
-
-     
-       
+window.addEventListener('keydown', controls);
     
-     function controls(e) {
-
-     if (e.keyCode == 82) { //reload
-      
-        const audior = document.getElementById('main_song');
-        const note1 = document.getElementById('note1');
-        const note2 = document.getElementById('note2');
-        const note3 = document.getElementById('note3');
-        const note4 = document.getElementById('note4');
-        const note5 = document.getElementById('note5');
-        const note6 = document.getElementById('note6');
-        const note7 = document.getElementById('note7');
-        audior.currentTime = 0;
-        const reload = document.getElementsByClassName("reload")[0];
-        reload.classList.add('r');  
-        setTimeout(() => { reload.classList.remove('r'); }, 400);
-        
-        if(audior.paused) {
-        return;
-      }
-      else {
-        audior.play();
-    
-      }
-     } else if (e.keyCode == 32) {
-
-      const a = document.getElementById('main_song'); 
-      if(a.paused) {
-        a.play();
-      }
-      else {
-        a.pause();
-        // a.currentTime = 0; for stop button
-      }
-     } else if (e.keyCode == 37 || e.keyCode == 39) {
-        const audio = document.getElementById('main_song');
-  const note1 = document.getElementById('note1');
-  const note2 = document.getElementById('note2');
-  const note3 = document.getElementById('note3');
-  const note4 = document.getElementById('note4');
-  const note5 = document.getElementById('note5');
-  const note6 = document.getElementById('note6');
-  const note7 = document.getElementById('note7');
-  if (a==1) {
-    audio.src = './sounds/I.mp3'; // C 
-
-    note1.src = './sounds/A.wav';
-    note2.src = './sounds/B.wav';
-    note3.src = './sounds/C.wav';
-    note4.src = './sounds/D.wav';
-    note5.src = './sounds/E.wav';
-    note6.src = './sounds/F.wav';
-    note7.src = './sounds/G.wav';
-    a++;
-    
+function controls(e) {
+  if (e.keyCode == 82) { //reload
+    const audior = document.getElementById('main_song');
+    const note1 = document.getElementById('note1');
+    const note2 = document.getElementById('note2');
+    const note3 = document.getElementById('note3');
+    const note4 = document.getElementById('note4');
+    const note5 = document.getElementById('note5');
+    const note6 = document.getElementById('note6');
+    const note7 = document.getElementById('note7');
+    audior.currentTime = 0;
+    const reload = document.getElementsByClassName("reload")[0];
+    reload.classList.add('r');  
+    setTimeout(() => { reload.classList.remove('r'); }, 400);  
+    if(audior.paused) {
+      return;
+    }
+    else {
+      audior.play();
+    }
   }
-  else if (a==2) {
-    audio.src = './sounds/II.mp3'; // E
-
-    note1.src = './sounds/Ab.wav';
-    note2.src = './sounds/A.wav';
-    note3.src = './sounds/B.wav';
-    note4.src = './sounds/Db.wav';
-    note5.src = './sounds/Eb.wav';
-    note6.src = './sounds/E.wav';
-    note7.src = './sounds/Gb.wav';
-    a++;
+  else if (e.keyCode == 32) { // play pause
+    const a = document.getElementById('main_song'); 
+    if(a.paused) {
+      a.play();
+    }
+    else {
+      a.pause();
+    }
   }
-  else if (a==3) {
-    audio.src = './sounds/III.mp3'; // E
+  else if (e.keyCode == 37 || e.keyCode == 39) { // next song
+    const audio = document.getElementById('main_song');
+    const note1 = document.getElementById('note1');
+    const note2 = document.getElementById('note2');
+    const note3 = document.getElementById('note3');
+    const note4 = document.getElementById('note4');
+    const note5 = document.getElementById('note5');
+    const note6 = document.getElementById('note6');
+    const note7 = document.getElementById('note7');
+    if (a==1) {
+      audio.src = './sounds/I.mp3'; // C 
 
-    note1.src = './sounds/A.wav';
-    note2.src = './sounds/Bb.wav';
-    note3.src = './sounds/Db.wav';
-    note4.src = './sounds/D.wav';
-    note5.src = './sounds/E.wav';
-    note6.src = './sounds/F.wav';
-    note7.src = './sounds/G.wav';
-    a = 1;
+      note1.src = './sounds/A.wav';
+      note2.src = './sounds/B.wav';
+      note3.src = './sounds/C.wav';
+      note4.src = './sounds/D.wav';
+      note5.src = './sounds/E.wav';
+      note6.src = './sounds/F.wav';
+      note7.src = './sounds/G.wav';
+      a++;
+    }
+    else if (a==2) {
+      audio.src = './sounds/II.mp3'; // E
+
+      note1.src = './sounds/Ab.wav';
+      note2.src = './sounds/A.wav';
+      note3.src = './sounds/B.wav';
+      note4.src = './sounds/Db.wav';
+      note5.src = './sounds/Eb.wav';
+      note6.src = './sounds/E.wav';
+      note7.src = './sounds/Gb.wav';
+      a++;
+    }
+    else if (a==3) {
+      audio.src = './sounds/III.mp3'; // E
+
+      note1.src = './sounds/A.wav';
+      note2.src = './sounds/Bb.wav';
+      note3.src = './sounds/Db.wav';
+      note4.src = './sounds/D.wav';
+      note5.src = './sounds/E.wav';
+      note6.src = './sounds/F.wav';
+      note7.src = './sounds/G.wav';
+      a = 1;
+    }
+    document.getElementById('main_song').load();
+    document.getElementById('note1').load();
+    document.getElementById('note2').load();
+    document.getElementById('note3').load();
+    document.getElementById('note4').load();
+    document.getElementById('note5').load();
+    document.getElementById('note6').load();
+    document.getElementById('note7').load();
   }
-
-
-  document.getElementById('main_song').load();
-  document.getElementById('note1').load();
-  document.getElementById('note2').load();
-  document.getElementById('note3').load();
-  document.getElementById('note4').load();
-  document.getElementById('note5').load();
-  document.getElementById('note6').load();
-  document.getElementById('note7').load();
-     }
      
-     else {
-     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); 
-     const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); 
-     if (!audio) return; // stop from running
-     audio.currentTime = 0; // rewind audio to start !
-     audio.play();
-     key.classList.add('playing');
-     }
-   }
+  else { // keyboard
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); 
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); 
+    if (!audio) return; // stop from running
+    audio.currentTime = 0; // rewind audio to start !
+    audio.play();
+    key.classList.add('playing');
+  }
+}
 
-
-
-
-  //  window.addEventListener('keydown', playSound);
-  //    window.addEventListener('keydown', reload);
-
-  //     function reload(e) {
-  //       const reload = document.querySelector(`.reload[data-key="${e.keyCode}"]`); 
-  //       const audio = document.getElementById('main_song');
-  //       const note1 = document.getElementById('note1');
-  // const note2 = document.getElementById('note2');
-  // const note3 = document.getElementById('note3');
-  // const note4 = document.getElementById('note4');
-  // const note5 = document.getElementById('note5');
-  // const note6 = document.getElementById('note6');
-  // const note7 = document.getElementById('note7');
-  // audio.currentTime = 0;
-  // audio.pause();
-  //     }
-      
-  //    function playSound(e) {
-  //    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); 
-  //    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); 
-  //    if (!audio) return; // stop from running
-  //    audio.currentTime = 0; // rewind audio to start !
-  //    audio.play();
-  //    key.classList.add('playing');
-     
-  //  }
 
 </script>
+
 </html>
