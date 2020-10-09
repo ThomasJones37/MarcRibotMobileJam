@@ -6,8 +6,13 @@ html {
 }
 body {
   font-family: Montserrat, sans-serif;
-  background-color: aquamarine;
   margin: 0 0 0 0;
+  background-image: url(./IMG/bck2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 50%; /* up down for all */
+  background-position-x: 50%; /* side for mobile only */
+  color: white;
    
 }
 .reload {
@@ -19,6 +24,7 @@ body {
   border-radius: 70%;
   
   transition: all 500ms;
+  cursor: pointer;
 }
 .reload:active {
   transform: scale(1.3) rotate(-360deg);
@@ -40,6 +46,7 @@ body {
   min-height: 100vh;
   align-items: center;
   justify-content: center; 
+  
 } 
 
 .key {
@@ -51,7 +58,8 @@ body {
   text-align: center;
   color: white;
   background: rgba(0,0,0,0.3);
-  text-shadow: 0 0 .10px black;
+  text-shadow: 0 0 .10px black;  
+  
 }  
 
 kbd {
@@ -81,43 +89,57 @@ kbd {
   justify-content: center;
   gap: 5%;
   margin-top: -8vh;
+  
 }
 .pp { 
   border-radius: 70%; 
-  transition: all .7s ease;
+  transition: all .2s ease;
+  cursor: pointer;
 }
 
-.next {  
+.previous, .next {  
   border-radius: 70%;  
-  transition: all .7s ease;
+  transition: all .2s ease;
+  cursor: pointer;
   }
 
-.previous {
-  transform: rotate(180deg);
-  border-radius: 70%;  
-  transition: all .7s ease;
-}
-
-.pp:active, .next:active  {
-  transform: scale(1.5);
+.pp:active, .previous:active, .next:active  {
+  transform: scale(1.25);
     /* filter: drop-shadow(0 0 5px #ffc600 ); rotate(-10deg)*/
 }
-.previous:active {
-  transform: scale(1.5) rotate(180deg);
+.pp.p, .previous.n, .next.n {
+  transform: scale(1.25);
 }
 
 .hamburger_menu {
   display: none;
   z-index: 100;
 }
-
-
-
+footer {
+  font-size: 7px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.25);
+  position: absolute;
+  right: 1%;
+  bottom: 0.5%;
+  text-align: right;
+}
+footer:hover {
+  text-shadow: 0 0 1px white;
+}
+footer a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.25);
+}
 
 
 
 
 @media screen and (min-width: 1200px) {
+  footer {
+    font-size: 12px;
+    right: 0.5%;
+  }
   .key:hover kbd { 
     visibility: visible;
     transform: scale(1.5);      
@@ -131,58 +153,65 @@ kbd {
     transform: scale(1.3) rotate(360deg);
   } 
 
-  .hamburger_menu {
+  .hamburger_menu { /* centered the sub menu ! */
     display: flex;
-  }
-  .hamburger_menu img {
-    border-radius: 2.5vh;
-    display: flex;
+    justify-content: center;
     align-items: center;
-    margin-top: -55%;
-    margin-left: 85.6%;
+  }
+  .burger_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 125%;
+    z-index: 100;
+    border-radius: 2.5vh;
     cursor: pointer;
     transition: all 250ms ease 10ms;
     
   }
-
-  .hamburger_menu img:hover {
-    box-shadow: 0 0 3.5vh black;
+  .burger_img:hover {
+    box-shadow: 0 0 3.5vh white;
+  }
+  .burger_img.button_vis {
+    box-shadow: 0 0 3.5vh white;
   }
   .sub-menu {
-    line-height: 12vh;
-    text-align: center;
-    /* text-indent: -3.33vh;  */
+    line-height: 5vh;
     border-radius: 1vh;
     visibility: hidden;
-    position: relative;
-    left: 40vh;
-    top: 2vh;
+    position: absolute;
+    top: 20vh;
     box-shadow: none;
-    width: 100vh;
+    width: 50%; /* percent allows for good resize of window */
+    
     height: auto;
-    overflow: hidden; /* hides items during transition clever!*/
-    /* background-color: hsla(0, 0%, 100%, 0.25); */ 
+    background-color: hsla(0, 0%, 100%, 0.25); 
+  }
+  .show_help {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .show_help:hover .sub-menu{
+    visibility: visible;
+    transition: all 500ms linear;
   }
 
-  .hamburger_menu li {
-    display: inline-block;
-    position: relative;  
+  .sub-menu.button_vis {
+    visibility: visible;
     
   }
-
-  .hamburger_menu li:hover .sub-menu { 
-    visibility: visible;
-    transition: all 500ms linear;  
+  
+}
+@media screen and (min-width: 1500px) { 
+  .sub-menu {
+    width: 40%;
   }
 
-  .hamburger_menu .sub-menu li {
-    display: block;
-    left: -2vh;
-    top: -4vh;
-  }
 
 }
-
 
 
 @-moz-document url-prefix() { /* only firefox */
@@ -190,20 +219,28 @@ kbd {
   font-family: Montserrat, sans-serif;
   font-size: 18px; 
   }
-  
-  .hamburger_menu img {
-    position: absolute;  
-    margin-left: 85.8%; 
+  body {
+    background-color: black;
+    background-position-y: 100px; /* up down for all */
   }
-  .sub-menu {
-    top: -47vh;
+
+  @media screen and (min-width: 600px) { /* bloody firefox .... */
+    body {
+      background-position-y: 26.5% 
+    }
   }
-  .hamburger_menu .sub-menu li {  
-    top: -5vh;
+  @media screen and (min-width: 768px) {
+    body {
+      background-position-y: 150px; 
+    }
+  }
+  @media screen and (min-width: 1000px) {
+    body {
+      background-position-y: 26.5% 
+    }
   }
   
 }
-
 
 
 
