@@ -58,16 +58,15 @@ body {
   text-align: center;
   color: white;
   background: rgba(0,0,0,0.3);
-  text-shadow: 0 0 .10px black;
+  text-shadow: 0 0 .10px black;  
   cursor: pointer;
-  
 }  
 
 kbd {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
+  font-size: 12px;
   visibility: hidden;
   transition: all 350ms;    
 }
@@ -108,7 +107,7 @@ kbd {
   transform: scale(1.25);
     /* filter: drop-shadow(0 0 5px #ffc600 ); rotate(-10deg)*/
 }
-.pp.p, .previous.n, .next.n {
+.pp.n, .previous.n, .next.n {
   transform: scale(1.25);
 }
 
@@ -133,10 +132,34 @@ footer a {
   color: rgba(255, 255, 255, 0.25);
 }
 
+.song_title {
+  visibility: hidden;
+  /*position: absolute;
+  right: 42%;
+  bottom: 5%; */
+  display: flex;
+  justify-content: center;
+  margin-top: 22%;
+  text-shadow: 0 0 8px white;
+  transition: all 1.5s ease-in-out 150ms;
+  font-size: 16px;
+  
+}
+
+.song_title.show {
+  
+  text-shadow: 0 0 80px white;
+  visibility: visible;
+  
+  
+}
 
 
 
 @media screen and (min-width: 1200px) {
+  .song_title {
+    margin-top: 7%;
+  }
   footer {
     font-size: 12px;
     right: 0.5%;
@@ -218,7 +241,7 @@ footer a {
 @-moz-document url-prefix() { /* only firefox */
   .key kbd {
   font-family: Montserrat, sans-serif;
-  font-size: 18px; 
+  font-size: 12px; 
   }
   body {
     background-color: black;
