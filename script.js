@@ -619,7 +619,7 @@ function controls(e) {
 
 
 
-
+audio.addEventListener('ended', next);
 
 
 
@@ -640,6 +640,7 @@ function controls(e) {
 
 
                 // CLICKS //
+
 
 
 pp.addEventListener("mousedown", playPause);
